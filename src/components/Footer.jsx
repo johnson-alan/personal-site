@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FaArrowAltCircleUp, } from 'react-icons/fa'
 
-const Footer = styled.div`
+const StyledFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +19,7 @@ const Footer = styled.div`
 `
 
 const UpArrow = styled(FaArrowAltCircleUp)`
-  color: ${props => props.accentColor || 'black'};
+  color: ${props => props.color || 'black'};
   z-index: 3;
   cursor: pointer;
 `
@@ -34,9 +35,9 @@ const Link = styled.a`
   color: ${props => props.accentColor || 'black'};
 `
 
-export default ({ accentColor, scrollToHero }) => (
-  <Footer>
-    <UpArrow accentColor={accentColor} onClick={scrollToHero}/>
+const Footer = ({ accentColor, scrollToHero }) => (
+  <StyledFooter>
+    <UpArrow color={accentColor} onClick={scrollToHero}/>
     <BuiltWithText>
       {`Built with Gatsby. `}
       <Link
@@ -49,5 +50,12 @@ export default ({ accentColor, scrollToHero }) => (
         {`View Source.`}
       </Link>
     </BuiltWithText>
-  </Footer>
+  </StyledFooter>
 )
+
+Footer.propTypes = {
+  accentColor: PropTypes.string,
+  scrollToHero: PropTypes.func,
+}
+
+export default Footer
