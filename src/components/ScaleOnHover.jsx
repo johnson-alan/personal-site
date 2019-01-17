@@ -5,14 +5,16 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  ${props =>
-    props.containerChildren.map(
-      child => `
-      &:hover ${child} {
-        transform: scale(1.1);
-      }
-    `
+  @media (pointer: fine) {
+    ${props =>
+      props.containerChildren.map(
+        child => `
+        &:hover ${child} {
+          transform: scale(1.1);
+        }
+      `
     )}
+  }
 `
 
 const ScaleOnHover = ({ children, containerChildren }) => (
