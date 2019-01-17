@@ -10,9 +10,9 @@ const Footer = styled.div`
   padding: 0 5% 5% 5%;
   margin-top: -5%;
   @supports(padding: max(0px)) {
-    padding-top: max(5%, env(safe-area-inset-left));
+    padding-top: 0;
     padding-right: max(5%, env(safe-area-inset-right));
-    padding-bottom: 0;
+    padding-bottom: max(5%, env(safe-area-inset-left));
     padding-left: max(5%, env(safe-area-inset-right));
   }
 `
