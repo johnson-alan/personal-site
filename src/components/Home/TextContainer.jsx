@@ -17,12 +17,27 @@ const Container = styled.div`
   }
 `
 
+const LogoContainer = styled.div`
+  width: 75%;
+`
+
+const Logo = styled.img`
+  width: 100%;
+`
+
 const Header = styled.h2`
   font-size: 56px;
   font-weight: 900;
   color: ${props => props.color || 'black'};
   margin: 0;
   letter-spacing: 0;
+`
+
+const Subheader = styled.h3`
+  font-size: 28px;
+  font-weight: 500;
+  color: ${props => props.color || 'black'};
+  margin: 5px 0 0;
 `
 
 const BodyText = styled.h4`
@@ -32,13 +47,21 @@ const BodyText = styled.h4`
 
 const TextContainer = ({
   accentColor,
-  headerText,
-  bodyText,
+  actionLink,
   actionText,
-  actionLink
+  bodyText,
+  headerText,
+  logo,
+  subheaderText,
 }) => (
   <Container>
-    <Header color={accentColor}>{headerText}</Header>
+    {headerText && <Header color={accentColor}>{headerText}</Header>}
+    {logo && (
+      <LogoContainer>
+        <Logo src={logo} alt={`${headerText || subheaderText} logo`} />
+      </LogoContainer>
+    )}
+    {subheaderText && <Subheader>{subheaderText}</Subheader>}
     <BodyText>{bodyText}</BodyText>
     {actionText && (
       <ActionLink
@@ -52,10 +75,12 @@ const TextContainer = ({
 
 TextContainer.propTypes = {
   accentColor: PropTypes.string,
-  headerText: PropTypes.string,
-  bodyText: PropTypes.string,
-  actionText: PropTypes.string,
   actionLink: PropTypes.string,
+  actionText: PropTypes.string,
+  bodyText: PropTypes.string,
+  headerText: PropTypes.string,
+  logo: PropTypes.object,
+  subheaderText: PropTypes.string,
 }
 
 export default TextContainer

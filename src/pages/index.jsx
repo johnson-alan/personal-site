@@ -13,10 +13,12 @@ import Footer from '../components/Footer'
 
 import HTImage from '../../static/ht-xs-sm.png'
 import BSImage from '../../static/bs.png'
-// import AAPImage from '../../static/aap-psa.png'
 import CWImage from '../../static/cw-spa.png'
 import ACVideo from '../../static/ACVideo.mp4'
 import AAPVideo from '../../static/AAPVideo.mp4'
+
+import BSLogo from '../../static/svg/buildStreamLogoDark.svg'
+import AAPLogo from '../../static/aap-logo.png'
 
 const cwImageDims = 400
 
@@ -86,7 +88,7 @@ class Home extends Component {
         <MacBook singleImage={BSImage} />
         <TextContainer
           accentColor="#0479dc"
-          headerText="BuildStream"
+          logo={BSLogo}
           bodyText={buildStreamBodyText}
           actionText="Learn more"
           actionLink="https://www.buildstream.co"
@@ -100,7 +102,8 @@ class Home extends Component {
         <IPadPro video={AAPVideo} />
         <TextContainer
           accentColor="#f8dc4e"
-          headerText="Advance Auto Parts"
+          logo={AAPLogo}
+          subheaderText="Product Selection Assistant"
           bodyText={aapBodyText}
           actionText="Find a store"
           actionLink="https://stores.advanceautoparts.com"
