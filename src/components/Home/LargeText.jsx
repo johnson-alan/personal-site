@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -24,23 +24,31 @@ const Text = styled.h1`
   }
 `
 
-const LargeText = ({ accentColor, text, actionText, onChange }) => (
-  <TextContainer>
-    <Text>{text}</Text>
-    {actionText && (
-      <ActionLink
-        accentColor={accentColor}
-        actionText={actionText}
-        onChange={onChange}
-      />
-    )}
-  </TextContainer>
-)
+class LargeText extends Component {
+  setupTextRef = ref => this.textRef = ref
+
+  render = () => {
+    const { accentColor, text, actionText, onChange } = this.props
+    return (
+      <TextContainer>
+        <Text ref={this.setupTextRef}>{text}</Text>
+        {actionText && (
+          <ActionLink
+            // ref={this.setupLinkRef}
+            accentColor={accentColor}
+            actionText={actionText}
+            onChange={onChange}
+          />
+        )}
+      </TextContainer>
+    )
+  }
+}
 
 LargeText.propTypes = {
   accentColor: PropTypes.string,
   text: PropTypes.string,
-  actionText: PropTypes.string,
+  actionText: PropTypes.string
 }
 
 export default LargeText

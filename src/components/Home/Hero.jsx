@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const ViewPortContainer = styled.div`
-  height: 100vh;
+  box-sizing: border-box;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   flex-grow: 1;
-  padding: 0 5vw;
+  padding: 5vw;
   @media (max-width: 1000px) {
     flex-direction: column;
     padding: 10vh 5vw;
+    min-height: 0;
     height: 100%;
   }
   @media (max-width: 1000px) and (orientation: landscape) {
@@ -39,10 +41,12 @@ const GradientOverlay = styled.div`
 `
 
 const ContentContainer = styled.div`
-  flex: 1;
+  width: ${props => props.image ? '67vw' : '33vw'};
   min-height: ${props => props.image ? '500px' : 0};
   z-index: 2;
   @media (max-width: 1000px) {
+    width: unset;
+    flex: 0;
     min-height: 0;
   }
 `

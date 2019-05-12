@@ -10,6 +10,7 @@ const StyledImage = styled.img`
   border-radius: ${props => props.rounded ? '50%' : 0 };
   @media (max-width: 1000px) {
     height: 100%;
+    padding-bottom: 5vh;
   }
 `
 

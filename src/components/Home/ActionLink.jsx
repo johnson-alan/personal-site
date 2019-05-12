@@ -5,7 +5,7 @@ import { FaArrowAltCircleRight, FaArrowAltCircleDown } from 'react-icons/fa'
 
 const ActionLinkContainer = styled.div`
   &:hover {
-    cursor: ${props => props.clickable ? 'pointer' : 'auto'};
+    cursor: ${props => (props.clickable ? 'pointer' : 'auto')};
   }
 `
 
@@ -30,17 +30,25 @@ const DownArrow = styled(FaArrowAltCircleDown)`
 
 const ActionLink = ({ accentColor, actionText, actionLink, onChange }) => (
   <ActionLinkContainer clickable={onChange || actionLink}>
-    <Link
-      color={accentColor}
-      href={actionLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onChange}
-    >
-      {actionText}
-      {actionLink && <RightArrow/>}
-      {onChange && <DownArrow/>}
-    </Link>
+    {actionLink && actionLink[0] === '/' && (
+      <Link color={accentColor} href={actionLink}>
+        {actionText}
+        <RightArrow />
+      </Link>
+    )}
+    {(onChange || (actionLink && !(actionLink[0] === '/'))) && (
+      <Link
+        color={accentColor}
+        href={actionLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onChange}
+      >
+        {actionText}
+        {actionLink && <RightArrow />}
+        {onChange && <DownArrow />}
+      </Link>
+    )}
   </ActionLinkContainer>
 )
 
@@ -48,8 +56,7 @@ ActionLink.propTypes = {
   accentColor: PropTypes.string,
   actionText: PropTypes.string,
   actionLink: PropTypes.string,
-  arrowDown: PropTypes.bool,
+  arrowDown: PropTypes.bool
 }
 
 export default ActionLink
-

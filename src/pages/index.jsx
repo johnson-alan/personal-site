@@ -6,21 +6,35 @@ import Hero from '../components/home/Hero'
 import LargeText from '../components/home/LargeText'
 import TextContainer from '../components/home/TextContainer'
 import Image from '../components/Image'
+import IPadPro from '../components/iPadPro'
 import IPhone from '../components/iPhone'
+import MacBook from '../components/MacBook'
 import Footer from '../components/Footer'
 
 import HTImage from '../../static/ht-xs-sm.png'
+import BSImage from '../../static/bs.png'
+// import AAPImage from '../../static/aap-psa.png'
 import CWImage from '../../static/cw-spa.png'
 import ACVideo from '../../static/ACVideo.mp4'
+import AAPVideo from '../../static/AAPVideo.mp4'
 
-const imageDims = 400
+const cwImageDims = 400
 
-const hero4Styles = { start: '#e6eeff', end: '#fafcff' }
 const hero1Styles = { start: '#fde7e9', end: '#fffcfc' }
 const hero2Styles = { start: '#fffbe6', end: '#fffefa' }
 const hero3Styles = { start: '#ecebf9', end: '#fbfbfe' }
+const hero4Styles = { start: '#e6eeff', end: '#fafcff' }
+const hero5Styles = { start: '#cde7fe', end: '#e6f3fe'}
+const hero6Styles = { start: '#fff5cc', end: '#fffdf5'}
+// aap: #ffcc00
 
 const profBodyText = `I'm a Brooklyn-based developer building modern web applications.`
+
+const buildStreamBodyText = `BuildStream uses IoT sensors and AI to monitor and optimize the
+performance of heavy equipment on construction sites.`
+
+const aapBodyText = `A self-service product selection app to be fitted in kiosks in the
+aisles of Advance Auto Parts stores across the nation.`
 
 const heroBodyText = `A new social media platform for travel enthusiasts to
   record and share their excursions around the world in longform stories
@@ -37,8 +51,6 @@ class Home extends Component {
     this.heroRefs = []
   }
 
-  setHeroRef = ref => this.heroRefs.push(ref)
-
   scrollToHero = idx => () =>
     scrollToComponent(this.heroRefs[idx], {
       offset: 0,
@@ -46,6 +58,8 @@ class Home extends Component {
       duration: 500,
       ease: 'out-circ'
     })
+
+  setHeroRef = ref => this.heroRefs.push(ref)
 
   render = () => (
     <Layout>
@@ -65,6 +79,34 @@ class Home extends Component {
         ]}
       </Hero>
       <Hero
+        gradientStart={hero5Styles.start}
+        gradientEnd={hero5Styles.end}
+        setRef={this.setHeroRef}
+      >
+        <MacBook singleImage={BSImage} />
+        <TextContainer
+          accentColor="#0479dc"
+          headerText="BuildStream"
+          bodyText={buildStreamBodyText}
+          actionText="Learn more"
+          actionLink="https://www.buildstream.co"
+        />
+      </Hero>
+      <Hero
+        gradientStart={hero6Styles.start}
+        gradientEnd={hero6Styles.end}
+        setRef={this.setHeroRef}
+      >
+        <IPadPro video={AAPVideo} />
+        <TextContainer
+          accentColor="#f8dc4e"
+          headerText="Advance Auto Parts"
+          bodyText={aapBodyText}
+          actionText="Find a store"
+          actionLink="https://stores.advanceautoparts.com"
+        />
+      </Hero>
+      <Hero
         gradientStart={hero1Styles.start}
         gradientEnd={hero1Styles.end}
         setRef={this.setHeroRef}
@@ -82,8 +124,8 @@ class Home extends Component {
         <Image
           src={CWImage}
           alt="Crossword"
-          width={imageDims}
-          height={imageDims}
+          width={cwImageDims}
+          height={cwImageDims}
         />
         <TextContainer
           accentColor="#ffe761"

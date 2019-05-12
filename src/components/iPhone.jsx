@@ -13,6 +13,9 @@ const RelativeContainer = styled.div`
   height: ${iPhoneWidth * 2}px;
   position: relative;
   border-radius: ${iPhoneWidth / 6.4}px;
+  @media screen and (max-width: 1000px) {
+    height: ${`calc(${iPhoneWidth * 2}px + 5vh)`};
+  }
 `
 
 const AbosluteImage = styled.img`
@@ -48,7 +51,7 @@ const iPhone = ({ singleImage, images, video }) => (
       {singleImage && <ScreenImage src={singleImage} alt="iPhone Content" />}
       {images && null} {/* TODO: add Carousel */}
       {video && (
-        <Video autoPlay muted playsInline>
+        <Video autoPlay muted playsInline loop>
           {/* <source src={video} type="video/webm" /> */}
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
