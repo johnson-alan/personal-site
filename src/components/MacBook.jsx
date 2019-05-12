@@ -5,24 +5,25 @@ import styled from 'styled-components'
 import ScaleOnHover from './ScaleOnHover'
 import MacBookImage from '../../static/Apple-MacBook.png'
 
-const MacBookWidth = 700
-const MacBookWidthResponsive = 372
-const MacBookScreenWidth = 542
-const MacBookScreenWidthResponsive = 288
-
-const ResponsiveContainer = styled.div`
-  @media screen and (max-width: 1210px) and (min-width: 1000px) {
-    padding-top: 80px;
-  }
-`
+const MacBookWidth = 1000
+const MacBookWidthSmall = 600
+const MacBookScreenWidth = 780
+const MacBookScreenWidthSmall = 464
+const MacBookWidthResponsive = `${90}vw`
+const MacBookHeightResponsive = `${90 * 0.5847}vw` // based on aspect ratio including case
+const MacBookScreenWidthResponsive = '70vw' // 90 - 2 * repsonsive bezel width
 
 const RelativeContainer = styled.div`
   width: ${MacBookWidth}px;
   height: 400px;
   position: relative;
-  @media screen and (max-width: 1210px) {
-    width: ${MacBookWidthResponsive}px;
-    height: 250px;
+  @media screen and (max-width: 1500px) {
+    width: ${MacBookWidthSmall}px;
+    height: 350px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: ${MacBookWidthResponsive};
+    height: ${`calc(${MacBookHeightResponsive} + 5vh)`};
   }
 `
 
@@ -36,37 +37,50 @@ const MacBook = styled(AbosluteImage)`
   top: 0px;
   left: 0px;
   z-index: 1;
-  @media screen and (max-width: 1210px) {
-    width: ${MacBookWidthResponsive}px;
+  @media screen and (max-width: 1500px) {
+    width: ${MacBookWidthSmall}px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: ${MacBookWidthResponsive};
   }
 `
 
 const ScreenImage = styled(AbosluteImage)`
   width: ${MacBookScreenWidth}px;
-  top: 22px;
-  left: 81px;
-  @media screen and (max-width: 1210px) {
-    width: ${MacBookScreenWidthResponsive}px;
-    top: 12px;
-    left: 43px;
+  top: 32px;
+  left: 110px;
+  @media screen and (max-width: 1500px) {
+    width: ${MacBookScreenWidthSmall}px;
+    top: 19px;
+    left: 69px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: ${MacBookScreenWidthResponsive};
+    top: 2.95vw;
+    left: 10vw;
   }
 `
 
+// @TODO: absolute offsets not adapted yet
 const Video = styled.video`
   position: absolute;
   width: ${MacBookScreenWidth}px;
   top: 22px;
   left: 81px;
   transition: transform 300ms ease-in-out;
-  @media screen and (max-width: 1210px) {
-    width: ${MacBookScreenWidthResponsive}px;
+  @media screen and (max-width: 1500px) {
+    width: ${MacBookScreenWidthSmall}px;
+    top: 12px;
+    left: 43px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: ${MacBookScreenWidthResponsive};
     top: 12px;
     left: 43px;
   }
 `
 
 const iPhone = ({ singleImage, images, video }) => (
-  <ResponsiveContainer>
   <ScaleOnHover containerChildren={[MacBook, ScreenImage, Video]}>
     <RelativeContainer>
       <MacBook src={MacBookImage} alt="iPhone" />
@@ -81,7 +95,6 @@ const iPhone = ({ singleImage, images, video }) => (
       )}
     </RelativeContainer>
   </ScaleOnHover>
-  </ResponsiveContainer>
 )
 
 iPhone.propTypes = {
