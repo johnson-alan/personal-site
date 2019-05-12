@@ -12,4 +12,4 @@
 ## To Deploy
 
 - `gatsby build`
-- `surge public/ allenhj.com`
+- `surge public/ allenj.me`
