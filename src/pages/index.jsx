@@ -19,6 +19,7 @@ import AAPVideo from '../../static/AAPVideo.mp4'
 
 import BSLogo from '../../static/svg/buildStreamLogoDark.svg'
 import AAPLogo from '../../static/aap-logo.png'
+import HTLogo from '../../static/ht-logo.png'
 
 const cwImageDims = 400
 
@@ -117,7 +118,7 @@ class Home extends Component {
         <IPhone singleImage={HTImage} />
         <TextContainer
           accentColor="#ed1e2e"
-          headerText="Hero Traveler"
+          logo={HTLogo}
           bodyText={heroBodyText}
           actionText="Visit the site"
           actionLink="https://herotraveler.com"

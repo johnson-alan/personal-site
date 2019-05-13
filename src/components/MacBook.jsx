@@ -7,11 +7,11 @@ import MacBookImage from '../../static/Apple-MacBook.png'
 
 const MacBookWidth = 1000
 const MacBookWidthSmall = 600
-const MacBookScreenWidth = 780
+const MacBookScreenWidth = 772
 const MacBookScreenWidthSmall = 464
 const MacBookWidthResponsive = `${90}vw`
 const MacBookHeightResponsive = `${90 * 0.5847}vw` // based on aspect ratio including case
-const MacBookScreenWidthResponsive = '70vw' // 90 - 2 * repsonsive bezel width
+const MacBookScreenWidthResponsive = `${69.4}vw` // 90 - 2 * repsonsive bezel width
 
 const RelativeContainer = styled.div`
   width: ${MacBookWidth}px;
@@ -48,7 +48,7 @@ const MacBook = styled(AbosluteImage)`
 const ScreenImage = styled(AbosluteImage)`
   width: ${MacBookScreenWidth}px;
   top: 32px;
-  left: 110px;
+  left: 116px;
   @media screen and (max-width: 1500px) {
     width: ${MacBookScreenWidthSmall}px;
     top: 19px;
@@ -56,8 +56,8 @@ const ScreenImage = styled(AbosluteImage)`
   }
   @media screen and (max-width: 1000px) {
     width: ${MacBookScreenWidthResponsive};
-    top: 2.95vw;
-    left: 10vw;
+    top: 3vw;
+    left: 10.4vw;
   }
 `
 
